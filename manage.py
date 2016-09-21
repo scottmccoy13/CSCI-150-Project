@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#scott was here
 import os
 import sys
 
@@ -20,3 +21,5 @@ if __name__ == "__main__":
             )
         raise
     execute_from_command_line(sys.argv)
+
+#test
