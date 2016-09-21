@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#scott was here
 import os
 import sys
 
