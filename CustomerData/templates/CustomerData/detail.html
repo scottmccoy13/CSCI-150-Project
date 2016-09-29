@@ -4,15 +4,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<b>Customer List</b>
 </head>
 <body>
-{%for customer in object_list%}
-	<li>{{customer.first_name}}  {{customer.last_name}} : 
-		<a href="{% url 'CustomerData:remove_customer' customer.id %}">Remove</a>
-	</li>
-{%endfor%}
-
-<a href = "{% url 'CustomerData:index' %}"> back to index </a>
+<h1>Customer Details</h1>
+	<p>{{customer.first_name}}  {{customer.last_name}}</p>
 </body>
 </html>

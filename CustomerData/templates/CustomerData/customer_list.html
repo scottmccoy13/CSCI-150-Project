@@ -6,11 +6,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Confirm</h1>
-	<form action="" method="post">
-		{% csrf_token %}
-		<p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm" />
-</form>
+<h1>Customer List</h1>
+<ol>
+{%for customer in object_list%}
+	<li><a href="{% url 'CustomerData:detail' customer.id %}">{{customer.first_name}}  {{customer.last_name}}</a> --- <a href="{% url 'CustomerData:remove_customer' customer.id %}">Remove</a>
+	</li>
+{%endfor%}
+</ol>
+<a href = "{% url 'CustomerData:index' %}"> back to index </a>
 </body>
 </html>

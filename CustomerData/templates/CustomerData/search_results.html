@@ -4,13 +4,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<h1>Customer Data</h1>
 </head>
 <body>
-	<ul>
-		<li><a href="{% url 'CustomerData:search_for_customer' %}" >Search</a></li>
-		<li><a href="{% url 'CustomerData:add_customer' %}">Add Customer</a></li>
-		<li><a href="{% url 'CustomerData:customer_list' %}">Lists of Customers</a></li>
-	</ul>
+<h1>Search Results</h1>
+	{%for x in search_list%}
+		<li><a href="{% url 'CustomerData:detail' x.id %}">{{x}}</a> --- <a href="{% url 'CustomerData:remove_customer' x.id %}">Remove</a></li>
+	{%endfor%}
+		
+	<a href="{% url 'CustomerData:search_for_customer' %}">return to search</a>
+
 </body>
 </html>
