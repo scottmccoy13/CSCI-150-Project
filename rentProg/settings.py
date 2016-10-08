@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'schedule',
-    'djangobower'
+    'djangobower',
+    'django.contrib.sites',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -56,15 +58,16 @@ ROOT_URLCONF = 'rentProg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'Calendar/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request'
             ],
         },
     },
@@ -128,9 +131,12 @@ STATICFILES_FINDERS = [
     'djangobower.finders.BowerFinder'
 ]
 
-BOWER_COMPONENTS_ROOT = '/CSCI-150-Project/components/'
-
 BOWER_INSTALLED_APPS = (
     'jquery',
     'bootstrap'
+)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'site_media/'),
+    os.path.join(BASE_DIR, 'bower_components/'),
 )
