@@ -17,6 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-	url(r'^CustomerData/', include('CustomerData.urls')),
+    url(r'^admin/', admin.site.urls)
+    url(r'^CustomerData/', include('CustomerData.urls')),
+    url(r'^assetdata/', include ('AssetData.urls')),
+    url(r'^calendar/', include('Calendar.urls')),
 ]
