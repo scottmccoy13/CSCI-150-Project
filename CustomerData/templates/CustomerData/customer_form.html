@@ -1,0 +1,20 @@
+{% extends 'CustomerData/base.html' %}
+
+{% block title %} Add Customer {% endblock %}
+
+{% block body %}
+	<!-- action = "" because will be redirected to the same view after django store the info into database
+		method indicates how to send the data from the form; 
+		"The form-data can be sent as URL variables (with method="get") or as HTTP post transaction (with method="post")."
+	-->
+    <h1>Add Customer</h1>
+	<form action="" method="post">
+		{% csrf_token %}
+		{% for field in form %}
+		<div class = "form-group">
+			<label>{{field.label_tag}}</label>
+			<div>{{field}}</div>
+		</div>
+		{% endfor %}
+			<button type= "submit" class ="btn btn-info">Submit</button>
+{% endblock %}

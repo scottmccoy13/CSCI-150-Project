@@ -1,0 +1,12 @@
+{% extends 'CustomerData/base.html' %}
+
+{% block title %} Confirm {% endblock %}
+
+{% block body %}
+<h1>Confirm</h1>
+	<form action="" method="post">
+		{% csrf_token %}
+		<p>Remove "{{ object }}"?</p>
+    <input type="submit" value="Confirm" />
+</form>
+{% endblock %}

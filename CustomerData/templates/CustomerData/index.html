@@ -1,0 +1,12 @@
+{% extends 'CustomerData/base.html' %}
+
+{% block title %} Customer Data {% endblock %}
+
+{% block body %}
+<h1>Customer Data</h1>
+	<ul>
+		<li><a href="{% url 'CustomerData:search_for_customer' %}" >Search</a></li>
+		<li><a href="{% url 'CustomerData:add_customer' %}">Add Customer</a></li>
+		<li><a href="{% url 'CustomerData:customer_list' %}">Lists of Customers</a></li>
+	</ul>
+{% endblock %}

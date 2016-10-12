@@ -1,0 +1,25 @@
+{% extends 'CustomerData/base.html' %}
+
+{% block title %} Search Results {% endblock %}
+
+{% block body %}
+<h1>Search Results</h1>
+	{%for x in search_list%}
+		<li><a href="{% url 'CustomerData:detail' x.id %}">{{x}}</a> --- <a href="{% url 'CustomerData:remove_customer' x.id %}">Remove</a></li>
+	{%endfor%}
+	
+	{%for x in search_list2%}
+		<li><a href="{% url 'CustomerData:detail' x.id %}">{{x}}</a> --- <a href="{% url 'CustomerData:remove_customer' x.id %}">Remove</a></li>
+	{%endfor%}
+	
+	{%for x in search_list3%}
+		<li><a href="{% url 'CustomerData:detail' x.id %}">{{x}}</a> --- <a href="{% url 'CustomerData:remove_customer' x.id %}">Remove</a></li>
+	{%endfor%}
+	
+	{%for x in search_list4%}
+		<li><a href="{% url 'CustomerData:detail' x.id %}">{{x}}</a> --- <a href="{% url 'CustomerData:remove_customer' x.id %}">Remove</a></li>
+	{%endfor%}
+		
+	<a href="{% url 'CustomerData:search_for_customer' %}">return to search</a>
+
+{% endblock %}
