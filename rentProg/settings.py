@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'schedule',
     'djangobower',
-    'django.contrib.sites',
     'django.contrib.humanize',
 ]
 
@@ -60,7 +59,10 @@ ROOT_URLCONF = 'rentProg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'Calendar/templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'Calendar/templates'),
+            os.path.join(BASE_DIR, 'rentProg/templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
