@@ -1,0 +1,12 @@
+body {
+    
+}
+
+div.tablew {
+	height: 400px;
+	overflow-y: auto;
+}
+
+div.panel {
+	height: 400px;
+}
