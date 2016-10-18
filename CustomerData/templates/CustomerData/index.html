@@ -4,9 +4,106 @@
 
 {% block body %}
 <h1>Customer Data</h1>
-	<ul>
-		<li><a href="{% url 'CustomerData:search_for_customer' %}" >Search</a></li>
-		<li><a href="{% url 'CustomerData:add_customer' %}">Add Customer</a></li>
-		<li><a href="{% url 'CustomerData:customer_list' %}">Lists of Customers</a></li>
-	</ul>
+<!-- Search bar -->
+<div class="row container-fluid">
+	<div class = "col-md-1"></div>
+	<div class = "col-md-5">
+		<form name = "form1" action = "." method = "POST">
+		{% csrf_token %}
+		{{search_form}}
+		<button type = "submit" name = "search_form" value = "search">Search</button> 
+		</form>
+	</div>
+	<div class = "col-md-6"></div>
+</div>
+
+<!-- List, Add, Remove Buttons -->
+<div class = "row container-fluid">
+	<div class = "col-md-1"></div>
+	<div class = "col-md-5">
+			<a href="{% url 'CustomerData:index' %}"><button type = "submit">List</button></a>
+			<button type="button" data-toggle="modal" data-target="#addForm">Add</button>
+			<form name = "form3" id = "form3" action = "." method = "POST">
+			{% csrf_token %}
+				<button type = "submit" name = "remove_button" value = "remove">Remove</button>
+			</form>
+	</div>
+	<div class = "col-md-6"></div>
+</div>
+
+<!-- modal for Adding Customer -->
+<div id="addForm" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class ="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Add Customer</h4>
+			</div>
+			<!-- INSERT FORM HERE -->
+			<div class ="modal-body">
+				<form name = "form2" action = "." method = "POST" id= "form2">
+				{% csrf_token %}
+				{{add_form}}
+				<button type = "submit" name = "add_form" value="add">Add</button> 
+				</form>
+			</div>
+			<!-- END OF FORM -->
+		</div>
+	</div>
+</div>
+
+<!-- table list for customers -->
+<div class = "row container-fluid">
+	<div class = "col-md-12 checkbox tablew">
+	<table class = "table table-responsive table-hover">
+		<thead>
+			<th><input type = "checkbox" id="selectall" value=""/></th>
+			<th>First Name</th>
+			<th>Last Name</th>
+		</thead>
+		<tbody id = "list">
+			{% for customer in list %}
+			<tr style="cursor: pointer">
+					<td><input type = "checkbox" form = "form3" class="remove" value="{{customer.id}}" name = "items[]"/></td>
+					<td class = 'linkrow' data-href="{% url 'CustomerData:detail' customer.id %}" >{{customer.first_name}}</td>
+					<td class = 'linkrow' data-href="{% url 'CustomerData:detail' customer.id %}" >{{customer.last_name}}</td>
+			</tr>
+			{% endfor %}
+		
+			<!-- if User uses Search, these will replace the full list of Customers -->
+			{%for x in search_list%}
+			<tr class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" style="cursor: pointer">
+				<td><input type = "checkbox" class="remove" value="{{x.id}}" name = "items[]" form = "form3"/></td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.first_name}}</td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.last_name}}</td>
+			</tr>
+			{%endfor%}
+	
+			{%for x in search_list2%}
+			<tr class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" style="cursor: pointer">
+				<td><input type = "checkbox" class="remove" value="{{x.id}}" name = "items[]" form = "form3"/></td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.first_name}}</td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.last_name}}</td>
+			</tr>
+			{%endfor%}
+	
+			{%for x in search_list3%}
+			<tr class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" style="cursor: pointer">
+				<td><input type = "checkbox" class="remove" value="{{x.id}}" name = "items[]" form = "form3"/></td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.first_name}}</td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.last_name}}</td>
+			</tr>
+			{%endfor%}
+	
+			{%for x in search_list4%}
+			<tr class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" style="cursor: pointer">
+				<td><input type = "checkbox" class="remove" value="{{x.id}}" name = "items[]" form = "form3"/></td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.first_name}}</td>
+				<td class = 'linkrow' data-href="{% url 'CustomerData:detail' x.id %}" >{{x.last_name}}</td>
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+	</div>
+</div>
 {% endblock %}

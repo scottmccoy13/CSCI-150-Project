@@ -5,11 +5,23 @@
     <title>{% block title %}Customer{%  endblock %}</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'CustomerData/css/stylesheet.css' %}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script> 
+		jQuery(document).ready(function($){
+			$(".linkrow").click(function() {
+				window.document.location = $(this).data("href");
+			});
+			$("#selectall").change(function(){
+				$(".remove").prop('checked', $(this).prop("checked"));
+			});
+		});
+	</script>
 </head>
 <body>
 {% block body %}
 {% endblock %}
 </body>
 </html>
+
