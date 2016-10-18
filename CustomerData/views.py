@@ -67,6 +67,22 @@ def index(request):
 				}
 				
 				return render(request, 'CustomerData/index.html', context)
+		
+		elif 'remove_button' in request.POST:
+			deletelist = request.POST.getlist('items[]') 
+		
+			for k in deletelist:
+				Customer.objects.filter(id = k).delete()
+				
+			list = Customer.objects.all()
+			
+			context = {
+				"add_form": add_form,
+				"search_form": search_form, 				
+				"list": list,
+			}
+			
+			return render(request, 'CustomerData/index.html', context)
 				
 	else: #if request.method == 'GET'
 		context = {
@@ -75,7 +91,7 @@ def index(request):
 			"list": list
 		}
 		return render(request, 'CustomerData/index.html', context)
-			
+		
 class CustomerSearchForm(forms.Form):
 	search = forms.CharField(max_length = 500, label="")
 	
@@ -86,7 +102,3 @@ class AddCustomerForm(forms.Form):
 class DetailView(generic.DetailView):
 	model = Customer
 	template_name = 'CustomerData/detail.html'
-		
-class CustomerDelete(DeleteView):
-		model = Customer
-		success_url = reverse_lazy('CustomerData:index')

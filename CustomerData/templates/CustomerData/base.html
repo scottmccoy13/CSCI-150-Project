@@ -13,6 +13,9 @@
 			$(".linkrow").click(function() {
 				window.document.location = $(this).data("href");
 			});
+			$("#selectall").change(function(){
+				$(".remove").prop('checked', $(this).prop("checked"));
+			});
 		});
 	</script>
 </head>
