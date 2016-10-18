@@ -9,6 +9,36 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+ <nav class="navbar navbar-inverse">
+     <div class ="container-fluid">
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="">Rent</a>
+         </div>
+         <div class="collapse navbar-collapse">
+             <ul class="nav navbar-nav">
+                 <li class="">
+                     <a href="{% url 'CustomerData:index' %}">
+                         <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp;
+                         Customer
+                     </a>
+                 </li>
+                 <li class="">
+                     <a href="">
+                         <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;
+                         Asset
+                     </a>
+                 </li>
+             </ul>
+         </div>
+     </div>
+ </nav>
 {% block body %}
 {% endblock %}
 </body>
