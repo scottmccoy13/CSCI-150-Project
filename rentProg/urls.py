@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^calendar/', include('Calendar.urls')),
     url(r'^CustomerData/', include('CustomerData.urls')),
     url(r'^assetdata/', include('AssetData.urls')),
+    url(r'^schedule/', include('schedule.urls'))
 ]
