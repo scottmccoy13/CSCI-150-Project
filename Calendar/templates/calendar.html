@@ -1,0 +1,44 @@
+{% extends "site_base.html" %}
+
+
+{% load i18n staticfiles %}
+
+{% block head_title %}{% trans "Calendar" %}{% endblock %}
+
+{% block tab_id %}id="home_tab"{% endblock %}
+
+{% block extra_head %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+<script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<link rel='stylesheet' type='text/css' href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css" />
+<script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+<style>
+	#calendar {
+		max-width: 1024px;
+		margin: 0 auto;
+	}
+</style>
+{% endblock %}
+
+{% block body %}
+<div id="calendar"></div>
+<script type='text/javascript'>
+$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay,listWeek'
+        },
+        editable: true,
+        navLinks: true,
+        events: '/schedule/api/occurrences?calendar_slug=rentalcal'
+    })
+
+});
+</script>
+
+{% endblock %}
