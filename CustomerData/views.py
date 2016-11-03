@@ -41,14 +41,14 @@ def index(request):
 				else: 
 					search_list2 = temp.filter(last_name__icontains = search[0])
 	
-				context = {
-					"search_list" : search_list, 
-					"search_list2" : search_list2,				
-					"search_list3" : search_list3,
-					"search_list4" : search_list4,
-					"search_form": search_form,
-					"add_form": add_form
-				}	
+			context = {
+				"search_list" : search_list, 
+				"search_list2" : search_list2,				
+				"search_list3" : search_list3,
+				"search_list4" : search_list4,
+				"search_form": search_form,
+				"add_form": add_form
+			}	
 			return render(request, 'CustomerData/index.html', context)
 		
 		#add customer
@@ -66,6 +66,13 @@ def index(request):
 					"list": list
 				}
 				
+				return render(request, 'CustomerData/index.html', context)
+			else:
+				context = {
+					"add_form": add_form,
+					"search_form": search_form, 
+					"list": list
+				}
 				return render(request, 'CustomerData/index.html', context)
 		
 		elif 'remove_button' in request.POST:
