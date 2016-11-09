@@ -1,8 +1,19 @@
-from django.http import HttpResponse
 from .models import Asset
+from django.shortcuts import render
+from django.views import generic
+from django.http import Http404
+
 
 def assetHome(request):
-    return HttpResponse("<h1>Asset Data</h1>") 
+	allAssets = Asset.objects.all()
+	return render(request, 'assetdata/index.html', {'allAssets': allAssets})
 	
 def assetDetail(request, asset_id):
-	return HttpResponse("<h2>Details for asset ID:" + str(asset_id) + "</h2>")
+	try:
+		asset = Asset.objects.get(pk=asset_id)
+	except Asset.DoesNotExist:
+		raise Http404("Asset does not exist")
+	return render(request, 'assetdata/detail.html', {'asset': asset})
+
+
+	
