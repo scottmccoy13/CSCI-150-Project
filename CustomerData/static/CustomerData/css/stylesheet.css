@@ -1,13 +1,29 @@
-body {
-    
+.navbar {
+	margin-bottom: 0px;
 }
 
-{
-	pointer-events: none;
+div.b1, div.b2{
+	display: inline-block;
 }
 
-th {
+div.s {
+	width: 100%;
 	background-color: ;
+	padding-top: 7px;
+	margin-bottom: 0px;
+}
+
+div.b {
+	background-color: ;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	color: black;
+	background-color: black; 
+	margin-top: 10px;
+	margin-bottom: 0px;
 }
 
 th:first-child{
@@ -15,10 +31,5 @@ th:first-child{
 }
 
 div.tablew {
-	height: 400px;
-	overflow-y: auto;
-}
-
-div.panel {
-	height: 400px;
+	background-color: ;
 }
