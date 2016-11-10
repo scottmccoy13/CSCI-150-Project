@@ -33,3 +33,7 @@ th:first-child{
 div.tablew {
 	background-color: ;
 }
+
+#msg {
+	color: red;
+}

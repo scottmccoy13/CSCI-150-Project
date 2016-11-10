@@ -17,6 +17,34 @@
 			$(".remove").prop('checked', $(this).prop("checked"));
 		});
 	});
+	
+	jQuery(document).on('submit', '#form2', function(e){
+		e.preventDefault();
+		$.ajax({
+			type: 'POST',
+			url: 'add/',
+			data: $('#form2').serialize(),
+			dataType: 'json',
+			success:function(response){
+				$('msg').empty();
+				if(response.error1 && response.error2){
+					$('#msg').html('first name is blank</br> last name is blank</br>');
+				}
+				else if(response.error1){
+					$('#msg').html('first name is blank </br>');
+				}
+				else if(response.error2){
+					$('#msg').html('last name is blank');
+				}
+				else if(response.success){
+					$('msg').empty();
+					alert("Added");	
+					$('#addForm').modal('hide');
+					window.location.reload(false); 
+				}
+			},
+		});
+	});
 	</script>
 </head>
 <body>

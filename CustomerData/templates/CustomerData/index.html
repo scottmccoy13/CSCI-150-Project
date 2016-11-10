@@ -5,7 +5,7 @@
 {% block body %}
 <!-- Search, List, Add, Remove Buttons -->
 <div class="container-fluid s">
-		<form name = "form1" action = "." method = "POST" class= "ss">
+		<form name = "form1" action = "." method = "GET" class= "ss">
 		{% csrf_token %}
 		{{search_form}}
 		<button type = "submit" name = "search_form" value = "search" class="btn btn-default">Search</button> 
@@ -36,10 +36,10 @@
 			</div>
 			<!-- INSERT FORM HERE -->
 			<div class ="modal-body">
-				<form name = "form2" action = "." method = "POST" id= "form2">
+				<form name = "form2" method = "POST" id= "form2">
 				{% csrf_token %}
 				{{add_form}}
-				 
+				<div id = "msg"></div>
 				</form>
 			</div>
 			<!-- END OF FORM -->
