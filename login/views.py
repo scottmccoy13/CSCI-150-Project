@@ -21,10 +21,10 @@ def login_user(request):
                 login(request, user)
                 return render(request, '')
             else:
-                return render(request, '', {'error_message': 'Your account has been disabled'})
+                return render(request, 'login/login.html', {'error_message': 'Your account has been disabled'})
         else:
-            return render(request, '', {'error_message': 'Invalid login'})
-    return render(request, '')
+            return render(request, 'login/login.html', {'error_message': 'Invalid login'})
+    return render(request, 'login/login.html')
 
 
 def register(request):
