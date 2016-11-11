@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
 from CustomerData.models import Customer 
-from datetime import datetime
+import datetime
+from django.utils.translation import gettext as _
 #this might let me pull data 
 #for customer first and last name, look at foregin key stuff
 
