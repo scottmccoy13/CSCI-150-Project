@@ -1,0 +1,10 @@
+{% if allAssets %}
+	<h3>All assets: </h3>
+	<ul>
+		{% for asset in allAssets %} 
+		<li><a href="{{ asset.id }}/">{{ asset.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<h3>No assets registered</h3>
+{% endif %}
