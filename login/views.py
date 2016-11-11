@@ -8,7 +8,7 @@ def logout_user(request):
     context = {
         "form": form,
     }
-    return render(request, '', context)
+    return render(request, 'CustomerData/index.html', context)
 
 
 def login_user(request):
@@ -19,7 +19,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, '')
+                return render(request, 'CustomerData/index.html')
             else:
                 return render(request, 'login/login.html', {'error_message': 'Your account has been disabled'})
         else:
@@ -39,8 +39,8 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, '')
+                return render(request, 'CustomerData/index.html')
     context = {
         "form": form,
     }
-    return render(request, '', context)
+    return render(request, 'login/register.html', context)
