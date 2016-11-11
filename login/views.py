@@ -8,7 +8,7 @@ def logout_user(request):
     context = {
         "form": form,
     }
-    return render(request, 'CustomerData/index.html', context)
+    return render(request, 'login/login.html', context)
 
 
 def login_user(request):
