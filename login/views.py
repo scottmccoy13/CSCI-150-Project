@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, logout, login
 from .forms import UserForm
 
+def index(request):
+    return render(request,'login/login.html')
+
 def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)

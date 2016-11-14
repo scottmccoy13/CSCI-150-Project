@@ -19,7 +19,7 @@ from django.views.generic import TemplateView
 from login import urls
 
 urlpatterns = [
-    url(r'^$', include('login.urls')),
+    url(r'^', include('login.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^calendar/', include('Calendar.urls')),
     url(r'^CustomerData/', include('CustomerData.urls')),
