@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
 
+from Calendar.views import full_calendar
+
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name="calendar.html"), name='calendar')
+    url(r'^$', full_calendar, name='calendar')
 ]
