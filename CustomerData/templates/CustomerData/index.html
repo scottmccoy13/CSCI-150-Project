@@ -3,28 +3,6 @@
 {% block title %} Customer Data {% endblock %}
 
 {% block body %}
-<!-- Search, List, Add, Remove Buttons -->
-<div class="container-fluid s">
-		<form name = "form1" action = "." method = "GET" class= "ss">
-		{% csrf_token %}
-		{{search_form}}
-		<button type = "submit" name = "search_form" value = "search" class="btn btn-default">Search</button> 
-		</form>
-		
-		<div class = "b1">
-				<a href="{% url 'CustomerData:index' %}"><button type = "submit" class = "btn btn-default">List</button></a>
-			
-				<button type="button" data-toggle="modal" data-target="#addForm" class="btn btn-default">Add</button>
-		</div>
-	
-		<div class = "b2">
-			<form name = "form3" id = "form3" action = "." method = "POST">
-				{% csrf_token %}
-				<button type = "submit" name = "remove_button" value = "remove" class= "btn btn-default">Remove</button>
-			</form>
-		</div>
-<hr width ="100%">
-</div>
 
 <!-- modal for Adding Customer -->
 <div id="addForm" class="modal fade" role="dialog">
@@ -38,30 +16,85 @@
 			<div class ="modal-body">
 				<form name = "form2" method = "POST" id= "form2">
 				{% csrf_token %}
-				{{add_form}}
+				<table>
+				<tbody>
+				<tr>
+					<td class = "addtable" >First Name </td>
+					<td>{{add_form.first_name}}</td>
+				</tr>
+				<tr>
+					<td class = "addtable">Last Name </td>
+					<td>{{add_form.last_name}}</td>
+				</tr>
+				<tr>
+					<td class = "addtable">Address </td>
+					<td><input disabled></td>
+				</tr>
+				<tr>
+					<td class = "addtable" >Phone Number </td> 
+					<td><input disabled></td>
+				</tr>
+				</tbody>
+				</table>
 				<div id = "msg"></div>
+					</tbody>
 				</form>
 			</div>
 			<!-- END OF FORM -->
 			<div class="modal-footer">
-				<button type= "submit" class="btn btn-default" name = "add_form" form = "form2" value="add">Add</button>
+				<button type= "submit" class="btn btn-success" name = "add_form" form = "form2" value="add">Add</button>
 				<button type= "button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- table list for customers -->
-<div class = "row container-fluid b">
-	<div class = "col-md-2"></div>
+<div class = "row container-fluid s">
+	<div class = "col-md-1"></div>
+	<div class = "col-md-7">
+	<h4 id = "title"><strong>Customer Data</strong></h4>
+	<!-- search bar -->
+	<form name = "form1" action = "." method = "GET" class= "ss">
+		{% csrf_token %}
+		{{search_form}}
+		<button type = "submit" name = "search_form" value = "search" class="btn btn-default search">Search</button> 
+	</form>
+	
+	</div>
+	<div class = "col-md-3">
+	</div>
+	
+	<div class = "col-md-1">
+	</div>
+</div>
+
+<div class = "row container-fluid bb">
+	<div class = "col-md-1"></div>
+	
+	<!-- list, add, remove  buttons -->
+	<div class = "col-md-2 b">
+		<a href="{% url 'CustomerData:index' %}"><button type = "submit" class = "btn btn-default btn-block"><span class="glyphicon glyphicon-list"></span>List All</button></a>		
+		
+		<button type="button" data-toggle="modal" data-target="#addForm" class="btn btn-default btn-block"><span class="glyphicon glyphicon-plus"></span>Add</button>
+		
+		<form name = "form3" id = "form3" action = "." method = "POST">
+			{% csrf_token %}
+			<button type = "submit" name = "remove_button" value = "remove" class= "btn btn-default btn-block"><span class="glyphicon glyphicon-remove"></span>Remove</button>
+		</form>	
+	</div>
+	
+	
+	<!-- table list for customers -->
 	<div class = "col-md-8 checkbox tablew">
 	<table class = "table table-responsive table-hover">
 	<col width = "20">
 		<thead>
 			<th><label><input type = "checkbox" id="selectall" value=""/></label></th>
+			<!--<th>ID</th>-->
 			<th>First Name</th>
 			<th>Last Name</th>
 		</thead>
+		
 		<tbody id = "list">
 			{% for customer in list %}
 			<tr style="cursor: pointer">
@@ -106,6 +139,6 @@
 		</tbody>
 	</table>
 	</div>
-	<div class = "col-md-2"></div>
+	<div class = "col-md-1"></div>
 </div>
 {% endblock %}

@@ -33,9 +33,10 @@ $(document).ready(function() {
           center: 'title',
           right: 'month,agendaWeek,agendaDay,listWeek'
         },
-        editable: true,
         navLinks: true,
-        events: '/schedule/api/occurrences?calendar_slug=rentalcal'
+        events: [
+            {{ events|safe }}
+        ]
     })
 
 });

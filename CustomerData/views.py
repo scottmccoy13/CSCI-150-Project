@@ -8,6 +8,8 @@ from django import forms
 from .models import Customer
 
 def index(request):
+	if not request.user.is_authenticated():
+		return render(request, 'login/login.html')
 	search_list = Customer.objects.all()
 	list = search_list
 	temp = {}
@@ -93,10 +95,13 @@ def addCustomer(request):
 		else:
 			#return JsonResponse(add_form)
 			response = {}
-			if request.POST['first_name'].isspace():
-				response['error1'] = "blank"
-			if request.POST['last_name'].isspace():
-				response['error2'] = "blank"
+			#remove leading whitespaces since django still accepts those with whitespaces in the front, but not those in between 
+			f = request.POST['first_name'].lstrip()
+			l = request.POST['last_name'].lstrip()
+			if all(x.isspace() for x in f) or any(not x.isalpha() for x in f): 
+				response['error1'] = "letters"
+			if all(x.isspace() for x in l) or any(not x.isalpha() for x in l):
+				response['error2'] = "letters"
 			return JsonResponse(response)
 		
 class CustomerSearchForm(forms.Form):
@@ -105,6 +110,19 @@ class CustomerSearchForm(forms.Form):
 class AddCustomerForm(forms.Form):
 	first_name = forms.CharField(max_length = 250)
 	last_name = forms.CharField(max_length = 250)
+	
+	def clean(self):
+		cleaned_data = super(AddCustomerForm, self).clean()
+		first = cleaned_data.get('first_name')
+		last = cleaned_data.get('last_name')
+		#these won't show since I'm using ajax, they are here just so that the else statement in addCustomer(request) will be trigger if all the characters in the string are not letters.
+		if not str(first).isalpha() and not str(last).isalpha():
+			raise forms.ValidationError("letters")
+		elif not str(first).isalpha():
+			raise forms.ValidationError("letters")
+		elif not str(last).isalpha():
+			raise forms.ValidationError("letters")
+		return cleaned_data
 
 class DetailView(generic.DetailView):
 	model = Customer
