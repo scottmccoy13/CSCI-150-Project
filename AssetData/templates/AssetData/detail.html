@@ -1,1 +1,22 @@
-{{ asset }}
+<h1>{{asset.name}}</h1>
+<h3>Cost: ${{asset.cost}}</h3>
+<h3>Availibility: {{asset.availibility}} </h3>
+<h3>Outlength: {{asset.outLength}}</h3>
+
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'AssetData:availibility' asset_id %}" method="post">
+ 	{% csrf_token %}
+ 	{% for asset in allAssets %}
+ 		<input type="radio" id="asset{{ forloop.counter}}" name="asset" value="{{ asset.id }}">
+ 		<label for="asset{{ forloop.counter}}">
+ 			{{ asset.name }}
+ 			{% if asset.availability %}
+				<img src="http://i.imgur.com/b9b13Rd.png" />
+			{% endif %}
+ 		</label><br>
+ 	{% endfor %}
+ 	<input type="submit" value="On Rent">
+</form>

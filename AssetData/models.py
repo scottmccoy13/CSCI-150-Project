@@ -12,9 +12,14 @@ class Asset(models.Model):
 	availibility = models.BooleanField(default = True) #if an item is available for rent or not
 	outLength    = models.IntegerField(default = 0)    #number of days until item returns
 	dateRented   = models.DateField(_("Date"), default=datetime.date.today)
+	#currOwn      = models.ForeignKey(Customer, default="store", on_delete=models.CASCADE)
 	def __str__(self):
 		return self.name                                                   
-class currentOwner(models.Model):
-	currOwn      = models.ForeignKey(Customer, on_delete=models.CASCADE)                 #current ownership (user foreign key
+
+#class currentOwner(models.Model):
+	#current ownership (user foreign key)
+#	currOwn      = models.ForeignKey(Customer, on_delete=models.CASCADE) #current ownership (user foreign key
+#	def __str__(self):
+#		return self.currOwn
 	#ADD HISTORY PART 
 
