@@ -42,7 +42,7 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'CustomerData/index.html')
+                return render(request, 'Calendar/templates/calendar.html')
     context = {
         "form": form,
     }
