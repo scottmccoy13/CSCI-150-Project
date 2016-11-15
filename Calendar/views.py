@@ -6,6 +6,8 @@ from AssetData.models import Asset
 
 
 def full_calendar(request):
+    if not request.user.is_authenticated():
+        return render(request, 'login/login.html')
     events = []
     for asset in Asset.objects.all():
         events.append("""

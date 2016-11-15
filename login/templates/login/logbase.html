@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Customer{%  endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'CustomerData/css/stylesheet.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+	jQuery(document).ready(function($){
+		$(".linkrow").click(function(){
+			window.document.location = $(this).data("href");
+		});
+		$("#selectall").change(function(){
+			$(".remove").prop('checked', $(this).prop("checked"));
+		});
+	});
+
+	jQuery(document).on('submit', '#form2', function(e){
+		e.preventDefault();
+		$.ajax({
+			type: 'POST',
+			url: 'add/',
+			data: $('#form2').serialize(),
+			dataType: 'json',
+			success:function(response){
+				$('msg').empty();
+				if(response.error1 && response.error2){
+					$('#msg').html('first name is blank</br> last name is blank</br>');
+				}
+				else if(response.error1){
+					$('#msg').html('first name is blank </br>');
+				}
+				else if(response.error2){
+					$('#msg').html('last name is blank');
+				}
+				else if(response.success){
+					$('msg').empty();
+					alert("Added");
+					$('#addForm').modal('hide');
+					window.location.reload(false);
+				}
+			},
+		});
+	});
+	</script>
+</head>
+<body>
+ <nav class="navbar navbar-inverse">
+     <div class ="container-fluid">
+         <div class="navbar-header">
+             <a class="navbar-brand" href="">Rent</a>
+         </div
+     </div>
+ </nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>
