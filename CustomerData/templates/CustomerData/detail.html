@@ -3,6 +3,37 @@
 {% block title %} Customer Details {% endblock %}
 
 {% block body %}
-<h1>Customer Details</h1>
-	<p>{{customer.first_name}}  {{customer.last_name}}</p>
+
+<div class = "row container-fluid">
+	<div class = "col-md-4">
+<table class = "table table-striped">
+	
+		<thead>
+		<th>{{customer.first_name}}  {{customer.last_name}}</th>
+		<th></th>
+		</thead>
+		
+		<tbody>
+		<tr>
+			<td>First Name</td>
+			<td>{{customer.first_name}}</td>
+		</tr>
+		<tr>
+			<td>Last Name</td>
+			<td>{{customer.last_name}}</td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Phone Number</td>
+			<td></td>
+		</tr>
+		</tbody>
+</table>
+	</div>
+	<div class = "col-md-8"></div>
+	
+</div>
 {% endblock %}

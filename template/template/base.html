@@ -26,18 +26,18 @@
 			data: $('#form2').serialize(),
 			dataType: 'json',
 			success:function(response){
-				$('msg').empty();
+				$('#msg').empty();
 				if(response.error1 && response.error2){
-					$('#msg').html('first name is blank</br> last name is blank</br>');
+					$('#msg').html('First name only allows letters</br> Last name only allows letters</br>');
 				}
 				else if(response.error1){
-					$('#msg').html('first name is blank </br>');
+					$('#msg').html('First name only allows letters</br>');
 				}
 				else if(response.error2){
-					$('#msg').html('last name is blank');
+					$('#msg').html('Last name only allows letters');
 				}
 				else if(response.success){
-					$('msg').empty();
+					$('#msg').empty();
 					alert("Added");	
 					$('#addForm').modal('hide');
 					window.location.reload(false); 
