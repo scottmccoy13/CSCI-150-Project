@@ -51,7 +51,7 @@
 
 <div class = "row container-fluid s">
 	<div class = "col-md-1"></div>
-	<div class = "col-md-11">
+	<div class = "col-md-7">
 	<h4>Customer Data</h4></br>
 	<!-- search bar -->
 	<form name = "form1" action = "." method = "GET" class= "ss">
@@ -60,6 +60,15 @@
 		<button type = "submit" name = "search_form" value = "search" class="btn btn-default search">Search</button> 
 	</form>
 	
+	</div>
+	<div class = "col-md-3">
+	{%for x in list%}
+	{%empty%}
+		<h4 id = "no_customers">There are no Customers</h4>
+	{%endfor%}
+	</div>
+	
+	<div class = "col-md-1">
 	</div>
 </div>
 
@@ -78,6 +87,7 @@
 		</form>	
 	</div>
 	
+	
 	<!-- table list for customers -->
 	<div class = "col-md-8 checkbox tablew">
 	<table class = "table table-responsive table-hover">
@@ -87,6 +97,7 @@
 			<th>First Name</th>
 			<th>Last Name</th>
 		</thead>
+		
 		<tbody id = "list">
 			{% for customer in list %}
 			<tr style="cursor: pointer">

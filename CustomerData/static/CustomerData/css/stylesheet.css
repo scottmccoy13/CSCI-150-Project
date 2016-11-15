@@ -7,10 +7,10 @@ div.bb{
 	min-height: 60%;
 	height: 100%;
 }
+
 div.b{
 	background-color: #FAFAFA;
-	height: 100%;
-	
+	height: 100%;	
 }
 
 .tablew{
@@ -34,8 +34,13 @@ hr {
 	margin-bottom: 0px;
 }
 
-#msg {
+#msg{
 	color: red;
+}
+
+#no_customers{
+	color: red;
+	text-align: right;
 }
 
 td.addtable {
@@ -51,6 +56,10 @@ td.addtable {
 button.btn-block{
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+button.search{
+	margin-left: 10px;
 }
 
 h4{

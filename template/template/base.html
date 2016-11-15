@@ -10,8 +10,15 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 	jQuery(document).ready(function($){
+		/*
+		previously...
 		$(".linkrow").click(function(){
 			window.document.location = $(this).data("href");
+		});
+		*/
+		//now link changes "tablew"'s content to reveal corresponding customer details 
+		$(".linkrow").click(function(){
+			$(".tablew").load($(this).data("href"));
 		});
 		$("#selectall").change(function(){
 			$(".remove").prop('checked', $(this).prop("checked"));
@@ -45,6 +52,7 @@
 			},
 		});
 	});
+	
 	</script>
 </head>
 <body>
