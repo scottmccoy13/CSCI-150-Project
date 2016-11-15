@@ -1,3 +1,6 @@
+{% extends 'template/template/base.html' %}
+{% block title %} {{asset.name}}  {% endblock %}
+{% block body %}
 <h1>{{asset.name}}</h1>
 <h3>Cost: ${{asset.cost}}</h3>
 <h3>Availibility: {{asset.availibility}} </h3>
@@ -17,3 +20,4 @@
 <input type="text" name="textfield">
 <button type="submit">Upload text</button>
 </form>
+{% endblock %}
