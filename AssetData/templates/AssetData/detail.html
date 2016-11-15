@@ -9,14 +9,5 @@
 
 <form action="{% url 'AssetData:availibility' asset_id %}" method="post">
  	{% csrf_token %}
- 	{% for asset in allAssets %}
- 		<input type="radio" id="asset{{ forloop.counter}}" name="asset" value="{{ asset.id }}">
- 		<label for="asset{{ forloop.counter}}">
- 			{{ asset.name }}
- 			{% if asset.availability %}
-				<img src="http://i.imgur.com/b9b13Rd.png" />
-			{% endif %}
- 		</label><br>
- 	{% endfor %}
  	<input type="submit" value="On Rent">
 </form>

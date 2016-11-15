@@ -11,13 +11,13 @@ def assetHome(request):
 def assetDetail(request, asset_id):
 	#trys to get asset id, if doesnt exist then throws 404
 	asset = get_object_or_404(Asset, pk=asset_id)
-	return render(request, 'assetdata/detail.html', {'asset': asset})
+	return render(request, 'assetdata/detail.html', {'asset': asset, 'asset_id': asset.id})
 
 def onRent(request, asset_id):
 	asset = get_object_or_404(Asset, pk=asset_id)
 
 	try:
-		allAssets = asset.pk
+		allAssets = Asset.objects.all()
 		
 	except (KeyError, Asset.DoesNotExist):
 		return render(request, 'AssetData/detail.html', {
@@ -25,7 +25,7 @@ def onRent(request, asset_id):
 			'error_message': "You did not select a valid asset"
 			})
 	else:
-		asset.availibility = False
+		asset.availibility = not(asset.availibility) 
 		asset.save()
-		return render(request, 'assetdata/detail.html', {'allAsset': allAssets, 'asset_id': asset.id})
-		#return render(request, 'assetdata/index.html', {'selectedAsset': selectedAsset})
+		return render(request, 'assetdata/detail.html', {'allAsset': allAssets, 'asset_id': asset.id, 'asset': asset})
+		
