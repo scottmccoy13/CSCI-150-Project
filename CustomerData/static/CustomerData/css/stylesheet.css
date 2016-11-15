@@ -68,8 +68,13 @@ button.edit{
 button.edit, button.remove{
 	float: right;
 }
+
 .glyphicon-list, .glyphicon-plus, .glyphicon-remove{
 	padding-right: 10px;
+}
+
+#title{
+	color:  #EC7063;
 }
 
 h4{

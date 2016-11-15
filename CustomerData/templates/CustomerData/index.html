@@ -52,7 +52,7 @@
 <div class = "row container-fluid s">
 	<div class = "col-md-1"></div>
 	<div class = "col-md-7">
-	<h4><strong>Customer Data</strong></h4>
+	<h4 id = "title"><strong>Customer Data</strong></h4>
 	<!-- search bar -->
 	<form name = "form1" action = "." method = "GET" class= "ss">
 		{% csrf_token %}
@@ -90,6 +90,7 @@
 	<col width = "20">
 		<thead>
 			<th><label><input type = "checkbox" id="selectall" value=""/></label></th>
+			<!--<th>ID</th>-->
 			<th>First Name</th>
 			<th>Last Name</th>
 		</thead>
