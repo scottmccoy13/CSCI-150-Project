@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
     <head>
+        <meta charset="UTF-8">
         {% load staticfiles %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 	    <link rel="stylesheet" type="text/css" href="{% static 'CustomerData/css/stylesheet.css' %}">
@@ -36,7 +37,7 @@
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
              </button>
-             <a class="navbar-brand" href="{% url 'CustomerData:index' %}">Rent</a>
+             <a class="navbar-brand" href="/calendar">Rent</a>
          </div>
          <div class="collapse navbar-collapse" id="topNavBar">
              <ul class="nav navbar-nav">
@@ -53,7 +54,7 @@
                      </a>
                  </li>
                  <li class="">
-                     <a href="">
+                     <a href="/calendar">
                          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;
                          Calender
                      </a>
