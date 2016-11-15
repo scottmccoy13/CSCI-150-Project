@@ -9,50 +9,80 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
-	jQuery(document).ready(function($){
-		/*
-		previously...
+	
+	//(document).ready() waits until the document is ready 
+	$(document).ready(function($){
+		/* previously...
+		
 		$(".linkrow").click(function(){
 			window.document.location = $(this).data("href");
 		});
+		
 		*/
 		//now link changes "tablew"'s content to reveal corresponding customer details 
+		/* each time the element with class = "linkrow" is clicked, the element with class = "tablew" will load the template for the corresponding customer into the ".tablew"'s content
+		*/
+		
 		$(".linkrow").click(function(){
 			$(".tablew").load($(this).data("href"));
 		});
+		
+		/* when the checkbox with id "selectall" is change (check/uncheck), all the displayed checkboxes with id "remove" will be (check/uncheck)
+		
+		$(selector).prop() set the property of the selector ("remove")'s "checked" attribute to be ("selectall")'s "checked" state. 
+		
+		*/
 		$("#selectall").change(function(){
 			$(".remove").prop('checked', $(this).prop("checked"));
 		});
-	});
-	
-	jQuery(document).on('submit', '#form2', function(e){
-		e.preventDefault();
-		$.ajax({
-			type: 'POST',
-			url: 'add/',
-			data: $('#form2').serialize(),
-			dataType: 'json',
-			success:function(response){
-				$('#msg').empty();
-				if(response.error1 && response.error2){
-					$('#msg').html('First name only allows letters</br> Last name only allows letters</br>');
-				}
-				else if(response.error1){
-					$('#msg').html('First name only allows letters</br>');
-				}
-				else if(response.error2){
-					$('#msg').html('Last name only allows letters');
-				}
-				else if(response.success){
+		
+		/*
+		after the document is ready, when there is a submit event with id "form2", it will prevent the action of the submit button.
+		then it will create an ajax request 
+		the method used to get the data = "POST"
+		the url to send the ajax request to = url
+		the serialized data to be sent with the ajax request = the inputs for the add form (in this case the form with id "form2")
+		the data expected to be sent back = json
+		if the request is a success (there is a json response) then go through those if statements
+		in this case, I made the add function in views.py to send a json response for both success and error, so that's why I left out the error function
+		*/
+		
+		$(document).on('submit', '#form2', function(event){
+			event.preventDefault();
+			$.ajax({
+				type: 'POST',
+				url: 'add/',
+				data: $('#form2').serialize(),
+				dataType: 'json',
+				success:function(response){
+					//clear content of <div id = "msg"></div>
 					$('#msg').empty();
-					alert("Added");	
-					$('#addForm').modal('hide');
-					window.location.reload(false); 
-				}
-			},
-		});
-	});
+					//if the response dictionary contains id error1 and error2 
+					if(response.error1 && response.error2){
+						$('#msg').html('First name only allows letters</br> Last name only allows letters</br>');
+					}
+					else if(response.error1){
+						$('#msg').html('First name only allows letters</br>');
+					}
+					else if(response.error2){
+						$('#msg').html('Last name only allows letters');
+					}
+					//if the response dictionary contains id success 
+					else if(response.success){
+						//clear the error messages
+						$('#msg').empty();
+						//Pop up alert alerting user of the success of adding the Customer
+						alert("Added");	
+						//close/hide the modal containing the add form
+						$('#addForm').modal('hide');
+						//reload the current page 
+						window.location.reload(false); 
+					}
+				},//end success
+			});//end ajax
+		});//end submit 
 	
+	});//end document.ready()
 	</script>
 </head>
 <body>

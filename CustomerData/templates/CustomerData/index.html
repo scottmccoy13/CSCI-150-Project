@@ -42,6 +42,7 @@
 			</div>
 			<!-- END OF FORM -->
 			<div class="modal-footer">
+				<!--outside of <form></form>; connect button to the add form, by setting form = "form2" -->
 				<button type= "submit" class="btn btn-success" name = "add_form" form = "form2" value="add">Add</button>
 				<button type= "button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
@@ -49,6 +50,7 @@
 	</div>
 </div>
 
+<!-- top row of the page is the search bar -->
 <div class = "row container-fluid s">
 	<div class = "col-md-1"></div>
 	<div class = "col-md-7">
@@ -68,7 +70,12 @@
 	</div>
 </div>
 
+
+<!-- second (last) row of the page is divided into the collection of buttons and the displayment of the table and Customer details -->
 <div class = "row container-fluid bb">
+	<!-- all the col adds up to the maximum length 12 -->
+	
+	<!--this div is use for spacing on the left-->
 	<div class = "col-md-1"></div>
 	
 	<!-- list, add, remove  buttons -->
@@ -139,6 +146,7 @@
 		</tbody>
 	</table>
 	</div>
+	<!--this div is for spacing on the right-->
 	<div class = "col-md-1"></div>
 </div>
 {% endblock %}
