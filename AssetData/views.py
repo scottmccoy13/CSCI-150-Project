@@ -27,5 +27,8 @@ def onRent(request, asset_id):
 	else:
 		asset.availibility = not(asset.availibility) 
 		asset.save()
+		if request.method == 'POST':
+			asset.outLength = request.POST.get('textfield', 0)
+			asset.save()
 		return render(request, 'assetdata/detail.html', {'allAsset': allAssets, 'asset_id': asset.id, 'asset': asset})
 		

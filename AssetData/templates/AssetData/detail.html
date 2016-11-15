@@ -11,3 +11,9 @@
  	{% csrf_token %}
  	<input type="submit" value="On Rent">
 </form>
+
+<form method="POST" action="{% url 'AssetData:availibility' asset_id %}">
+{% csrf_token %}
+<input type="text" name="textfield">
+<button type="submit">Upload text</button>
+</form>
