@@ -46,4 +46,4 @@ def register(request):
     context = {
         "form": form,
     }
-    return render(request, 'login/register.html', context)
+    return render(request, 'login/regf.html', context)
