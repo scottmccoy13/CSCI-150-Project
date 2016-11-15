@@ -22,7 +22,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'CustomerData/index.html')
+                return render(request, 'Calendar/templates/calendar.html')
             else:
                 return render(request, 'login/login.html', {'error_message': 'Your account has been disabled'})
         else:

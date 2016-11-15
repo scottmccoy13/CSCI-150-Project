@@ -8,6 +8,8 @@ from django import forms
 from .models import Customer
 
 def index(request):
+	if not request.user.is_authenticated():
+		return render(request, 'login/login.html')
 	search_list = Customer.objects.all()
 	list = search_list
 	temp = {}
