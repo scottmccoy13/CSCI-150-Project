@@ -42,7 +42,7 @@
 			</div>
 			<!-- END OF FORM -->
 			<div class="modal-footer">
-				<button type= "submit" class="btn btn-default" name = "add_form" form = "form2" value="add">Add</button>
+				<button type= "submit" class="btn btn-success" name = "add_form" form = "form2" value="add">Add</button>
 				<button type= "button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
@@ -62,10 +62,6 @@
 	
 	</div>
 	<div class = "col-md-3">
-	{%for x in list%}
-	{%empty%}
-		<h4 id = "no_customers">There are no Customers</h4>
-	{%endfor%}
 	</div>
 	
 	<div class = "col-md-1">
@@ -77,13 +73,13 @@
 	
 	<!-- list, add, remove  buttons -->
 	<div class = "col-md-2 b">
-		<a href="{% url 'CustomerData:index' %}"><button type = "submit" class = "btn btn-default btn-block">List</button></a>		
+		<a href="{% url 'CustomerData:index' %}"><button type = "submit" class = "btn btn-default btn-block"><span class="glyphicon glyphicon-list"></span>List All</button></a>		
 		
-		<button type="button" data-toggle="modal" data-target="#addForm" class="btn btn-default btn-block">Add</button>
+		<button type="button" data-toggle="modal" data-target="#addForm" class="btn btn-default btn-block"><span class="glyphicon glyphicon-plus"></span>Add</button>
 		
 		<form name = "form3" id = "form3" action = "." method = "POST">
 			{% csrf_token %}
-			<button type = "submit" name = "remove_button" value = "remove" class= "btn btn-default btn-block">Remove</button>
+			<button type = "submit" name = "remove_button" value = "remove" class= "btn btn-default btn-block"><span class="glyphicon glyphicon-remove"></span>Remove</button>
 		</form>	
 	</div>
 	

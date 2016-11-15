@@ -68,6 +68,9 @@ button.edit{
 button.edit, button.remove{
 	float: right;
 }
+.glyphicon-list, .glyphicon-plus, .glyphicon-remove{
+	padding-right: 10px;
+}
 
 h4{
 	margin-bottom: 0px;
