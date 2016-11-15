@@ -2,13 +2,16 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, logout, login
 from .forms import UserForm
 
+def index(request):
+    return render(request,'login/login.html')
+
 def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
     context = {
         "form": form,
     }
-    return render(request, '', context)
+    return render(request, 'login/login.html', context)
 
 
 def login_user(request):
@@ -19,12 +22,12 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, '')
+                return render(request, 'CustomerData/index.html')
             else:
-                return render(request, '', {'error_message': 'Your account has been disabled'})
+                return render(request, 'login/login.html', {'error_message': 'Your account has been disabled'})
         else:
-            return render(request, '', {'error_message': 'Invalid login'})
-    return render(request, '')
+            return render(request, 'login/login.html', {'error_message': 'Invalid login'})
+    return render(request, 'login/login.html')
 
 
 def register(request):
@@ -39,8 +42,8 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, '')
+                return render(request, 'CustomerData/index.html')
     context = {
         "form": form,
     }
-    return render(request, '', context)
+    return render(request, 'login/regf.html', context)
