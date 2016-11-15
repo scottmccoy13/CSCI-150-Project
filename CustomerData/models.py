@@ -7,8 +7,6 @@ class Customer(models.Model):
 	first_name = models.CharField(max_length = 250)
 	last_name = models.CharField(max_length = 250)
 	
-	def get_absolute_url(self):
-		return reverse('CustomerData:index')
-		
+	#gives a string version of class object 
 	def __str__(self):
 		return self.first_name + " " + self.last_name
