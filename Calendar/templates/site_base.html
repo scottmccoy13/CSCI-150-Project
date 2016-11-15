@@ -2,6 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
     <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	    <link rel="stylesheet" type="text/css" href="{% static 'CustomerData/css/stylesheet.css' %}">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>{% if site_name %}{{ site_name }} : {% endif %}{% block head_title %}{% endblock %}</title>
         <!--[if IE]><style>
@@ -21,6 +26,47 @@
     </head>
 
     <body>
+    <nav class="navbar navbar-inverse">
+     <div class ="container-fluid">
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="{% url 'CustomerData:index' %}">Rent</a>
+         </div>
+         <div class="collapse navbar-collapse" id="topNavBar">
+             <ul class="nav navbar-nav">
+                 <li class="">
+                     <a href="{% url 'CustomerData:index' %}">
+                         <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp;
+                         Customer
+                     </a>
+                 </li>
+                 <li class="">
+                     <a href="">
+                         <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;
+                         Asset
+                     </a>
+                 </li>
+                 <li class="">
+                     <a href="">
+                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;
+                         Calender
+                     </a>
+                 </li>
+                 <li>
+                    <a href="{% url 'login:logout_user' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
+                    </a>
+                </li>
+             </ul>
+         </div>
+     </div>
+ </nav>
     <p style="clear:both"/>
 
         <div id="body">
