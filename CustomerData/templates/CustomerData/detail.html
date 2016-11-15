@@ -1,13 +1,18 @@
 <div class = "row container-fluid">
-	<div class = "col-md-4">
-<table class = "table table-striped">
-	
+	<div class = "col-md-8">
+		<table class = "table table-striped">
+		
 		<thead>
 		<th>{{customer.first_name}}  {{customer.last_name}}</th>
 		<th></th>
 		</thead>
 		
 		<tbody>
+		<tr>
+			<!--automatic pk(id) given to created Customer object-->
+			<td>ID</td>
+			<td>{{customer.pk}}</td>
+		</tr>
 		<tr>
 			<td>First Name</td>
 			<td>{{customer.first_name}}</td>
@@ -25,8 +30,16 @@
 			<td></td>
 		</tr>
 		</tbody>
-</table>
+		</table>
 	</div>
-	<div class = "col-md-8"></div>
-	
+	<div class = "col-md-4"></div>
+</div>
+<div class = "row container-fluid">
+	<div class = "col-md-8">
+	<!-- Remove button -->
+	<button type = "button" class = "btn btn-danger remove" disabled>Remove</button>
+	<!-- Edit button -->
+	<button type = "button" class = "btn btn-default edit" disabled>Edit</button>
+	</div>
+	<div class = "col-md-4"></div>
 </div>
