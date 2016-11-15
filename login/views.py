@@ -27,7 +27,7 @@ def login_user(request):
                 return render(request, 'login/login.html', {'error_message': 'Your account has been disabled'})
         else:
             return render(request, 'login/login.html', {'error_message': 'Invalid login'})
-    return render(request, 'Calendar/templates/calendar.html')
+    return render(request, 'login/login.html')
 
 
 def register(request):
@@ -42,7 +42,7 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'Calendar/templates/calendar.html')
+                return render(request, 'CustomerData/index.html')
     context = {
         "form": form,
     }
