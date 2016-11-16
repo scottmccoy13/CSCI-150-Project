@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, logout, login
 from .forms import UserForm
+from django.shortcuts import reverse,HttpResponseRedirect
 
 def index(request):
     return render(request,'login/login.html')
@@ -22,7 +23,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'Calendar/templates/calendar.html')
+                return HttpResponseRedirect(reverse('calendar'))
             else:
                 return render(request, 'login/login.html', {'error_message': 'Your account has been disabled'})
         else:
@@ -42,7 +43,7 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'Calendar/templates/calendar.html')
+                return HttpResponseRedirect(reverse('calendar'))
     context = {
         "form": form,
     }

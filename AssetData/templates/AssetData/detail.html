@@ -2,9 +2,9 @@
 {% block title %} {{asset.name}}  {% endblock %}
 {% block body %}
 <h1>{{asset.name}}</h1>
-<h3>Cost: ${{asset.cost}}</h3>
-<h3>Availibility: {{asset.availibility}} </h3>
-<h3>Outlength: {{asset.outLength}}</h3>
+<h4>Cost: ${{asset.cost}}</h4>
+<h4>Availibility: {{asset.availibility}} </h4>
+<h4>Outlength: {{asset.outLength}}</h4>
 
 {% if error_message %}
 	<p><strong>{{ error_message }}</strong></p>
@@ -18,6 +18,6 @@
 <form method="POST" action="{% url 'AssetData:availibility' asset_id %}">
 {% csrf_token %}
 <input type="text" name="textfield">
-<button type="submit">Upload text</button>
+<button type="submit" name = "search_form" value = "search" class="btn btn-default search">Upload text</button>
 </form>
 {% endblock %}
