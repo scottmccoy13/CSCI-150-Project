@@ -12,12 +12,12 @@
 
 <form action="{% url 'AssetData:availibility' asset_id %}" method="post">
  	{% csrf_token %}
- 	<input type="submit" value="On Rent">
+ 	<input type="submit" class="btn btn-default" value="On Rent">
 </form>
 
 <form method="POST" action="{% url 'AssetData:availibility' asset_id %}">
 {% csrf_token %}
 <input type="text" name="textfield">
-<button type="submit" name = "search_form" value = "search" class="btn btn-default search">Upload text</button>
+<button type="submit" class="btn btn-default">Update Outlength</button>
 </form>
 {% endblock %}
